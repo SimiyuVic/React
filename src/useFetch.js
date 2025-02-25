@@ -30,7 +30,7 @@ const useFetch = (url) => {
                     setIsPending(false);
                     setError(err.message);
                 })
-            }, 3000);
+            }, 1000);
         },[url]);
     return {data, isPending, error}; // This is the data that we want to return from the custom hook.  
 }
