@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom'; // Link is used to navigate between pages without refreshing the page
+import { Link } from 'react-router-dom'; 
 
 const Navbar = () => {
     return (
         <div className="navbar">
-            <h1>instant-Blogger</h1>
+            <Link to="/"><h1>instant-Blogger</h1></Link>
             <div className="links">
                 <Link to ="/">Home</Link>
                 <Link to ="/create">New Blog</Link>

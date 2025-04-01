@@ -1,12 +1,15 @@
-import BlogList from "./BlogList";
-import useFetch from "./useFetch";
-import "./index.css"; // Make sure this file is included
+import { useParams } from "react-router-dom";
+import useFetch from './useFetch';
 
-const Home = () => {
-  const { data: blogs, isPending, error } = useFetch("http://localhost:8000/blogs");
 
-  return (
-      <div className="home">
+const BlogDetails = () => {
+
+    const { id } = useParams();
+    const { data: blog, error, isPending } = useFetch('http://localhost:8000/blogs/' + id);
+
+    return ( 
+        <div className="blog-details">
+            <div className="home">
           {isPending && (
             <div className="loader-container">
               <div className="loading-dots">
@@ -24,9 +27,16 @@ const Home = () => {
               <button onClick={() => window.location.reload()}>Try Again</button>
         </div>
       )}
-      {blogs && <BlogList blogs={blogs} title="All Titles!" />}
+      {blog && (
+        <article>
+            <h2>{ blog.title }</h2>
+            <p>Written By { blog.author }</p>
+            <div>{ blog.body }</div>
+        </article>
+      )}
     </div>
-  );
-};
-
-export default Home;
+        </div>
+     );
+}
+ 
+export default BlogDetails;

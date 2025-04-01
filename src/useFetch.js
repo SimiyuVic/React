@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
-// We are going to create a custom hook that will be used to fetch data from the server.
-// This custom hook will be used in src/Home.js.
+//created a custom hook that will be used to fetch data from the server.
 const useFetch = (url) => {
     const[data, setData] = useState(null);
     const[isPending, setIsPending] = useState(true);
@@ -32,7 +31,7 @@ const useFetch = (url) => {
                 })
             }, 1000);
         },[url]);
-    return {data, isPending, error}; // This is the data that we want to return from the custom hook.  
+    return {data, isPending, error}; // This is the data that is returned    from the custom hook.  
 }
 export default useFetch;
-// Now, we can use this custom hook in src/Home.js:
+//this custom hook in src/Home.js:
